@@ -9,14 +9,6 @@ async function bootstrap() {
   const globalPrefix = configService.get<string>(API_GLOBAL_BASE_URL);
   const port = configService.get<number>(PORT) || DEFAULT_PORT;
 
-  app.enableCors({
-    origin: true,
-    methods: 'GET, POST, HEAD, OPTIONS',
-    preflightContinue: false,
-    optionsSuccessStatus: 204,
-    credentials: true,
-  });
-
   app.setGlobalPrefix(globalPrefix);
   await app.listen(port);
 }
