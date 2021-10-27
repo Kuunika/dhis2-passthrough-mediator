@@ -13,7 +13,7 @@ import { ConfigService } from '@nestjs/config';
 import { HttpService } from '@nestjs/axios';
 import { Request } from 'express';
 import { AxiosError } from 'axios';
-import { API_GLOBAL_BASE_URL } from './common/constants/enviroment.constants';
+import { API_GLOBAL_BASE_URL } from './common/constants/environment';
 
 @Controller()
 export class AppController {

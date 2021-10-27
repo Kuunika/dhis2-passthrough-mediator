@@ -10,7 +10,7 @@ import {
   BASE_URL,
   PASSWORD,
   USERNAME,
-} from '../common/constants/enviroment.constants';
+} from '../common/constants/environment';
 import * as https from 'https';
 
 @Injectable()
