@@ -10,3 +10,4 @@ export {
 } from './environment';
 export { SERVICE_UNAVAILABLE_EXCEPTION_MESSAGE } from './exception-messages';
 export { GET_ADDRESS_INFO_NOT_FOUND } from './errors';
+export { REQUEST_METHOD } from './enums';
