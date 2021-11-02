@@ -4,6 +4,7 @@ import {
 	Injectable,
 	NotFoundException,
 	ServiceUnavailableException,
+	UnauthorizedException,
 } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { AxiosError, Method } from 'axios';
@@ -20,7 +21,7 @@ export class DHIS2Service {
 	constructor(
 		private readonly config: ConfigService,
 		private readonly httpService: HttpService,
-	) {}
+	) { }
 
 	async requestServiceFromDHIS2(requestMethod: Method, path: string, data?) {
 		try {
@@ -44,11 +45,13 @@ export class DHIS2Service {
 				message: SERVICE_UNAVAILABLE_EXCEPTION_MESSAGE,
 			});
 		}
-		if (error.response.status === 404) {
-			throw new NotFoundException();
-		}
-		if (error.response.status === 400) {
-			throw new BadRequestException();
+		switch (error.response.status) {
+			case 404:
+				throw new NotFoundException();
+			case 403:
+				throw new UnauthorizedException();
+			default:
+				throw new BadRequestException();
 		}
 	}
 }
