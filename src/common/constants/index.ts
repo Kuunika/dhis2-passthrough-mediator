@@ -1,14 +1,4 @@
-import { DEFAULT_PORT } from './defaults';
-import {
-    API_GLOBAL_BASE_URL,
-    BASE_URL,
-    MAX_REDIRECTS,
-    PASSWORD,
-    PORT,
-    TIMEOUT,
-    USERNAME,
-} from './environment';
-
+export { DEFAULT_PORT } from './defaults';
 export {
     API_GLOBAL_BASE_URL,
     BASE_URL,
@@ -17,5 +7,6 @@ export {
     PORT,
     TIMEOUT,
     USERNAME,
-    DEFAULT_PORT,
-};
+} from './environment';
+export { SERVICE_UNAVAILABLE_EXCEPTION_MESSAGE } from './exception-messages';
+export { GET_ADDRESS_INFO_NOT_FOUND } from './errors';
