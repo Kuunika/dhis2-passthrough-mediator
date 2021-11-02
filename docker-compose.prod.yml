@@ -1,0 +1,14 @@
+version: '3'
+services:
+  dhis2-passthrough:
+    restart: always
+    build: .
+    ports:
+      - 3434:3434
+    env_file:
+      - .env
+    networks:
+      - openhimv7_openhim
+networks:
+  openhimv7_openhim:
+    external: true
