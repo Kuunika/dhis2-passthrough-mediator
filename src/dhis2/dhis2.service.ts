@@ -47,6 +47,7 @@ export class DHIS2Service {
 		}
 		switch (error.response.status) {
 			case 404:
+				console.log(error.request);
 				throw new NotFoundException();
 			case 403:
 				throw new UnauthorizedException();
