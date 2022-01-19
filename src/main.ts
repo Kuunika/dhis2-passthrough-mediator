@@ -6,9 +6,13 @@ import { API_GLOBAL_BASE_URL, PORT, DEFAULT_PORT } from './common/constants';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.enableCors({
-    origin: true,
-    methods: 'GET,HEAD,PUT,PATCH,POST,OPTIONS',
-    credentials: false,
+    origin: [/^(.*)/],
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    preflightContinue: false,
+    optionsSuccessStatus: 200,
+    credentials: true,
+    allowedHeaders:
+      'Origin,X-Requested-With,Content-Type,Accept,Authorization,authorization,X-Forwarded-for',
   });
   const configService = app.get<ConfigService>(ConfigService);
   const globalPrefix = configService.get<string>(API_GLOBAL_BASE_URL);
