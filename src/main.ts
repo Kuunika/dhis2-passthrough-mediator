@@ -7,8 +7,8 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.enableCors({
     origin: true,
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
-    credentials: true,
+    methods: 'GET,HEAD,PUT,PATCH,POST,OPTIONS',
+    credentials: false,
   });
   const configService = app.get<ConfigService>(ConfigService);
   const globalPrefix = configService.get<string>(API_GLOBAL_BASE_URL);
