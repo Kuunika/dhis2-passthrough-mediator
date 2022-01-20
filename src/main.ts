@@ -1,7 +1,7 @@
 import { ConfigService } from '@nestjs/config';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-//import * as helmet from 'helmet';
+import helmet from 'helmet';
 import { API_GLOBAL_BASE_URL, PORT, DEFAULT_PORT } from './common/constants';
 
 async function bootstrap() {
@@ -11,7 +11,7 @@ async function bootstrap() {
     methods: 'GET, HEAD, PUT, PATCH, POST, DELETE',
     allowedHeaders: 'Content-Type, Authorization',
   });
-  //app.use(helmet());
+  app.use(helmet());
   const configService = app.get<ConfigService>(ConfigService);
   const globalPrefix = configService.get<string>(API_GLOBAL_BASE_URL);
   const port = configService.get<number>(PORT) || DEFAULT_PORT;
