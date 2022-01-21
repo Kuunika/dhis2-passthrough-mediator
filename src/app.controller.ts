@@ -7,10 +7,12 @@ export class AppController {
   constructor(private readonly dhis2Service: DHIS2Service) {}
 
   @Get(`*`)
-  /*@Header(
-    'Content-Security-Policy',
-    "default-src 'self' 'unsafe-inline' *.health.gov.mw",
-  )*/
+  @Header('Access-Control-Allow-Origin', ' *')
+  @Header(
+    'Access-Control-Allow-Methods',
+    ' GET, POST, PATCH, PUT, DELETE, OPTIONS',
+  )
+  @Header('Access-Control-Allow-Headers', 'Origin, Content-Type, X-Auth-Token')
   async catchAllGet(@Req() request: Request, @Res() response: Response) {
     const res = await this.dhis2Service.requestServiceFromDHIS2(
       'GET',
@@ -20,10 +22,11 @@ export class AppController {
   }
 
   @Post(`*`)
-  /*@Header(
-    'Content-Security-Policy',
-    "default-src 'self' 'unsafe-inline' *.health.gov.mw",
-  )*/
+  @Header(
+    'Access-Control-Allow-Methods',
+    ' GET, POST, PATCH, PUT, DELETE, OPTIONS',
+  )
+  @Header('Access-Control-Allow-Headers', 'Origin, Content-Type, X-Auth-Token')
   async catchAllPost(@Req() request: Request, @Res() response: Response) {
     const res = await this.dhis2Service.requestServiceFromDHIS2(
       'POST',
