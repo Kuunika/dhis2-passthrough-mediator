@@ -1,0 +1,35 @@
+{
+  "urn": "urn:mediator:dhis2_pass_through",
+  "version": "1.0.0",
+  "name": "DHIS2 Pass Though",
+  "description": "Pass Through Mediator for Communicating with DHIS2",
+  "defaultChannelConfig": [
+    {
+      "name": "Bootstrap Scaffold Mediator",
+      "urlPattern": "^/dhis2$",
+      "routes": [
+        {
+          "name": "DHIS2 Pass Though Mediator Endpoint",
+          "host": "dhis2-pass-through-mediator",
+          "path": "/",
+          "port": "3000",
+          "primary": true,
+          "type": "http"
+        }
+      ],
+      "allow": ["dhis2"],
+      "methods": ["GET", "POST", "PUT"],
+      "type": "http"
+    }
+  ],
+  "endpoints": [
+    {
+      "name": "DHIS2 Pass Though Mediator Endpoint",
+      "host": "dhis2-pass-through-mediator",
+      "path": "/",
+      "port": "3000",
+      "primary": true,
+      "type": "http"
+    }
+  ]
+}
