@@ -5,7 +5,7 @@
   "description": "Pass Through Mediator for Communicating with DHIS2",
   "defaultChannelConfig": [
     {
-      "name": "Bootstrap Scaffold Mediator",
+      "name": "DHIS2 Pass Though Mediator Endpoint",
       "urlPattern": "^/dhis2$",
       "routes": [
         {
@@ -30,6 +30,35 @@
       "port": "3000",
       "primary": true,
       "type": "http"
+    }
+  ],
+  "configDefs": [
+    {
+      "param": "DHIS2",
+      "displayName": "DHIS2 Configuration Variables",
+      "description": "",
+      "type": "struct",
+      "array": false,
+      "template": [
+        {
+          "param": "dhis2_url",
+          "displayName": "DHIS2 URL",
+          "description": "URL of the DHIS2 instance where traffic will be routed",
+          "type": "string"
+        },
+        {
+          "param": "username",
+          "displayName": "Username",
+          "description": "Username of an authorised DHIS2 user within the targeted instance",
+          "type": "string"
+        },
+        {
+          "param": "password",
+          "displayName": "Password",
+          "description": "DHIS2 users password",
+          "type": "string"
+        }
+      ]
     }
   ]
 }
