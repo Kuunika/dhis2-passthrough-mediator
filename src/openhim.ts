@@ -3,7 +3,7 @@ import {
 	activateHeartbeat,
 	fetchConfig,
 	OpenHIMVariables,
-	IMediatorConfiguration,
+	MediatorConfiguration,
 } from "openhim-mediator-utils";
 import {readJsonFile} from "./common/utilities";
 import {ConfigurationService} from "./common/services/config.service";
@@ -16,7 +16,7 @@ const password = process.env.OPENHIM_PASSWORD;
 const apiURL = process.env.OPENHIM_API_URL;
 
 async function getConfigurations() {
-	const mediatorConfig = await readJsonFile<IMediatorConfiguration>(
+	const mediatorConfig = await readJsonFile<MediatorConfiguration>(
 		join(__dirname, "config", "mediatorConfig.json")
 	);
 

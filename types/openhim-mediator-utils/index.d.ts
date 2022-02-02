@@ -1,40 +1,40 @@
 declare module "openhim-mediator-utils" {
-	export interface IMediatorConfiguration {
+	export interface MediatorConfiguration {
 		urn: string;
 		version: string;
 		name: string;
 		description: string;
-		defaultChannelConfig: IDefaultChannelConfig[];
-		endpoints: IEndpoint[];
-		configDefs: IConfigDef[];
+		defaultChannelConfig: DefaultChannelConfig[];
+		endpoints: Endpoint[];
+		configDefs: ConfigDef[];
 	}
 
-	export interface IConfigDef {
+	export interface ConfigDef {
 		param: string;
 		displayName: string;
 		description: string;
 		type: string;
 		array: boolean;
-		template: ITemplate[];
+		template: Template[];
 	}
 
-	export interface ITemplate {
+	export interface Template {
 		param: string;
 		displayName: string;
 		description: string;
 		type: string;
 	}
 
-	export interface IDefaultChannelConfig {
+	export interface DefaultChannelConfig {
 		name: string;
 		urlPattern: string;
-		routes: IEndpoint[];
+		routes: Endpoint[];
 		allow: string[];
 		methods: string[];
 		type: string;
 	}
 
-	export interface IEndpoint {
+	export interface Endpoint {
 		name: string;
 		host: string;
 		path: string;
@@ -64,7 +64,7 @@ declare module "openhim-mediator-utils" {
 
 	export function registerMediator(
 		openhimConfig: OpenhimConfiguration,
-		mediatorConfig: IMediatorConfiguration,
+		mediatorConfig: MediatorConfiguration,
 		callback: Callback
 	): void;
 
