@@ -8,6 +8,7 @@ import {
 import {readJsonFile} from "./common/utilities";
 import {ConfigurationService} from "./common/services/config.service";
 import {config} from "dotenv";
+import { join } from "path";
 config();
 
 const username = process.env.OPENHIM_USERNAME;
@@ -16,7 +17,7 @@ const apiURL = process.env.OPENHIM_API_URL;
 
 async function getConfigurations() {
 	const mediatorConfig = await readJsonFile<IMediatorConfiguration>(
-		"./config/mediatorConfig.json"
+		join(__dirname, "config", "mediatorConfig.json")
 	);
 
 	const openhimConfig = {
