@@ -14,7 +14,8 @@ app.use(cors());
 app.use(Helmet());
 
 app.all("*", async (req, res) => {
-	if (req.url === "/") {
+	const requestUrl = req.url.split("/dhis2")[1];
+	if (requestUrl === "/" || requestUrl === "") {
 		return res.status(200).json({
 			message: "Hello and Welcome to the DHIS2 Pass Through Mediator Service",
 		});
@@ -29,7 +30,7 @@ app.all("*", async (req, res) => {
 				username: dhis2_username,
 				password: dhis2_password,
 			},
-			url: dhis2_url + req.url,
+			url: dhis2_url + requestUrl,
 			method: req.method as axios.Method,
 			data: req?.body,
 		});
