@@ -4,6 +4,7 @@ import * as axios from "axios";
 import Helmet from "helmet";
 import {registerToOpenHim} from "./openhim";
 import {ConfigurationService} from "./common/services";
+const https = require("https");
 require("dotenv").config();
 
 const MEDIATOR_PORT = process.env.MEDIATOR_PORT;
@@ -25,6 +26,11 @@ app.all("*", async (req, res) => {
 		ConfigurationService.getConfig();
 
 	try {
+		const httpsAgent = new https.Agent({
+			rejectUnauthorized: false,
+			requestCert: false,
+			agent: false,
+		});
 		const request = await axios.default.request({
 			auth: {
 				username: dhis2_username,
@@ -33,6 +39,7 @@ app.all("*", async (req, res) => {
 			url: dhis2_url + requestUrl,
 			method: req.method as axios.Method,
 			data: req?.body,
+			httpsAgent,
 		});
 
 		return res.status(request.status).json(request.data);
