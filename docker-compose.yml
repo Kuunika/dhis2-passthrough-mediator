@@ -8,6 +8,12 @@ services:
   dhis2-pass-through-mediator:
     build: .
     container_name: dhis2-pass-through-mediator
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 10s
+        max_attempts: 5
+        window: 60s
     networks:
       - openhim
     ports:
