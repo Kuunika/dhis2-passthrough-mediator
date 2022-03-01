@@ -8,7 +8,8 @@
 - This mediator is utilise the OpenHIM framework to register the 
 
 ## Assumption
-- This mediator is intend to run using docker as such it is user the host mane of "" when registering the mediator channel. This is due to the information mediatorConfig.json file
+- This mediator is intend to run using docker as such it is user the host mane of openhim when registering the mediator channel. This is due to the information mediatorConfig.json file
+- The docker-compose.yml file explicitly defines "openhim" as the mediators' network.
 
 
 ## Requirements
