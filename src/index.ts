@@ -1,5 +1,4 @@
 import * as express from "express";
-import * as cors from "cors";
 import * as axios from "axios";
 import Helmet from "helmet";
 import {registerToOpenHim} from "./openhim";
