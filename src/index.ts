@@ -10,12 +10,7 @@ require("dotenv").config();
 const MEDIATOR_PORT = process.env.MEDIATOR_PORT;
 
 const app = express();
-const corsOptions = {
-	origin: "*",
-	credentials: true,
-	optionSuccessStatus: 200,
-};
-app.use(cors(corsOptions));
+
 app.use(Helmet());
 
 app.all("*", async (req, res) => {
