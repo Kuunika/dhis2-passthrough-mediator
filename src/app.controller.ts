@@ -14,6 +14,7 @@ export class AppController {
   )
   @Header('Access-Control-Allow-Headers', 'Origin, Content-Type, X-Auth-Token')
   async catchAllGet(@Req() request: Request, @Res() response: Response) {
+    console.log(request.url);
     const res = await this.dhis2Service.requestServiceFromDHIS2(
       'GET',
       request.url,
