@@ -1,2 +1,2 @@
 #!/bin/sh
-docker build -t dhis-2-passthrough-mediator . && docker run -d --name passthrough-mediator --restart unless-stopped --env-file .env -p 3434:3434 --network openhimv7_openhim dhis-2-passthrough-mediator
+docker rm passthrough-mediator -f && docker build -t dhis-2-passthrough-mediator . && docker run -d --name passthrough-mediator --restart unless-stopped --env-file .env -p 3434:3434 --network openhimv7_openhim dhis-2-passthrough-mediator
