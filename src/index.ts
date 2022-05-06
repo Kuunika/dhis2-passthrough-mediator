@@ -14,6 +14,7 @@ app.use(Helmet());
 
 app.all("*", async (req, res) => {
 	const requestUrl = req.url.split("/dhis2")[1];
+	console.info(`Incoming Requested URL: ${requestUrl}`);
 	if (requestUrl === "/" || requestUrl === "") {
 		return res.status(200).json({
 			message: "Hello and Welcome to the DHIS2 Pass Through Mediator Service",
@@ -42,6 +43,11 @@ app.all("*", async (req, res) => {
 
 		return res.status(request.status).json(request.data);
 	} catch (error) {
+		console.error(
+			`There was an issue with the request made to the following address: ${
+				dhis2_url + requestUrl
+			}, Please contact the DHIS2 systems manager for assistance`
+		);
 		return res.status(error.response.status).json(error.response.data);
 	}
 });
