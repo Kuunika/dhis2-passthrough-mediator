@@ -14,4 +14,4 @@ import { HttpModule } from '@nestjs/axios';
   providers: [DHIS2Service],
   exports: [DHIS2Service],
 })
-export class Dhis2Module { }
+export class Dhis2Module {}

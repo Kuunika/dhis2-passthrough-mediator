@@ -9,4 +9,4 @@ import { Dhis2Module } from './dhis2/dhis2.module';
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule { }
+export class AppModule {}

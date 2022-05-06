@@ -15,7 +15,7 @@ import * as https from 'https';
 
 @Injectable()
 export class HttpConfigService implements HttpModuleOptionsFactory {
-  constructor(private readonly config: ConfigService) { }
+  constructor(private readonly config: ConfigService) {}
 
   createHttpOptions(): HttpModuleOptions {
     return {
