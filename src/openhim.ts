@@ -46,6 +46,7 @@ export async function registerToOpenHim() {
 			process.exit(1);
 		}
 
+		//The initialConfig need to be a generic type
 		fetchConfig(openhimConfig, (err: Error, initialConfig) => {
 			if (err) {
 				console.error(`Failed to Fetch Configurations: ${err}`);
